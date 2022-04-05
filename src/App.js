@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ChakraProvider, Container, Flex } from "@chakra-ui/react";
+import Details from "./components/Details";
+import theme from "./themes/theme";
+import Cart from "./components/Cart";
+
+import "./themes/style.css";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ChakraProvider theme={theme}>
+      <Container maxW="container.xl" p={0}>
+        <Header />
+        <Flex
+          mt={"100px"}
+          h={{ base: "auto", md: "100vh" }}
+          py={[0, 10, 20]}
+          direction={{ base: "column-reverse", md: "row" }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Details />
+          <Cart />
+        </Flex>
+      </Container>
+    </ChakraProvider>
   );
 }
 
